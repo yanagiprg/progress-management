@@ -1,0 +1,19 @@
+<h1>追う項目</h1>
+
+<%= form_for @diary, method: :patch do |f| %>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">
+      Card title
+    </h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+      <% options = %w(面接数 訪問数 対応数 対面率 フル数 ドア率 既存 その他)%>
+      項目: <%= f.select :target, options %>
+    </h6>
+    <p class="card-text">
+      行動: <%= f.text_area :taking_action, cols: 40, rows: 3 %>
+    </p>
+  </div>
+</div>
+  <div><%= f.submit %></div>
+<% end %>
