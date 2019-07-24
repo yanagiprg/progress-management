@@ -1,0 +1,15 @@
+<h1>Name</h1>
+
+<%= form_for @member do |f| %>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">
+      Card title
+    </h5>
+    <p class="card-text">
+      名前: <%= f.text_field :name, size: 16 %>
+    </p>
+  </div>
+</div>
+  <div><%= f.submit %></div>
+<% end %>
