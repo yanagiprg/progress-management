@@ -22,6 +22,25 @@
             </a>
         </li>
 
+        <% if current_member %>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <%= link_to current_member.name, members_path %>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <%= link_to "Logout", :session, method: :delete %>
+                </a>
+            </li>
+        <% else %>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <%= link_to "Login", new_session_path %>
+                </a>
+            </li>
+        <% end %>
+
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown
