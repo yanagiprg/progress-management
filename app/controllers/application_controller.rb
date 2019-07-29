@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-  private def current_member
-    Member.find_by(id: session[:member_id]) if session[:member_id]
+  private def current_user
+    User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
-  helper_method :current_member
+  helper_method :current_user
 end

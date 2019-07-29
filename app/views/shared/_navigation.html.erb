@@ -22,21 +22,26 @@
             </a>
         </li>
 
-        <% if current_member %>
+        <% if current_user %>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <%= link_to current_member.name, members_path %>
+                    <%= link_to current_user.user_name, users_path %>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <%= link_to "Logout", :session, method: :delete %>
+                    <%= link_to "ログアウト", :session, method: :delete %>
                 </a>
             </li>
         <% else %>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <%= link_to "Login", new_session_path %>
+                    <%= link_to "登録", new_user_path %>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <%= link_to "ログイン", new_session_path %>
                 </a>
             </li>
         <% end %>
