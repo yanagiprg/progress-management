@@ -1,6 +1,6 @@
 <h1>追う項目</h1>
 
-<%= form_for @diary, method: :patch do |f| %>
+<%= form_for ([@member, @member.diaries.build]), method: :patch do |f| %>
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">

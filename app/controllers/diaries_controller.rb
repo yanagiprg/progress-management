@@ -1,30 +1,42 @@
 class DiariesController < ApplicationController
 
   def index
-    @diaries = Diary.all
+    @member = Member.find(params[:member_id])
+    @diaries = @member.diaries.order(created_at: :desc)
   end
 
   def new
-    @diary = Diary.new
+    @member = Member.find(params[:member_id])
+    @diary = @member.diaries.new
   end
 
   def create
-    @diary = Diary.create(diary_params)
-    redirect_to diaries_path
+    @member = Member.find(params[:member_id])
+    @diary = @member.diaries.create(diary_params)
+    redirect_to member_path(@member)
+  end
+
+  def show
+    @member = Member.find(params[:member_id])
+    @diary = @member.diaries.find(params[:id])
   end
 
   def edit
-    @diary = Diary.find(params[:id])
+    @member = Member.find(params[:member_id])
+    @diary = @member.diaries.find(params[:id])
   end
 
   def update
-    @diary = Diary.find(params[:id])
-    redirect_to diaries_path if @diary.update(diary_params)
+    @member = Member.find(params[:member_id])
+    @diary = @member.diaries.update(diary_params)
+    redirect_to member_path(@member)
   end
 
   def destroy
-    @diary = Diary.find(params[:id])
-    redirect_to diaries_path if @diary.destroy
+    @member = Member.find(params[:member_id])
+    @diary = @member.diaries.find(params[:id])
+    @diary.destroy
+    redirect_to member_path(@member)
   end
 
 private

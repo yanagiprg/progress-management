@@ -1,5 +1,49 @@
 <h1>
-  <%= @user.user_name %>
+  <%= @member.name %>
 </h1>
-<h2><%= link_to "Edit", edit_user_path(@user) %></h2>
-<h2><%= link_to "Delete", user_path(@user), method: :delete %></h2>
+
+<h1>追う項目</h1>
+<p>
+  <% @member.diaries.each do |diary| %>
+    <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h2 class="card-title">
+        <%= link_to diary.target, edit_member_diary_path(@member, diary) %>
+      </h2>
+      <h4 class="card-text">
+        <%= link_to diary.taking_action, edit_member_diary_path(@member, diary) %>
+        <br>
+      </h4>
+      <h6 class="card-text">
+        <%= diary.created_at %>
+      </h6>
+      <h6>
+        <%= link_to "編集", [diary.member, diary] %>
+        <%= link_to "削除", [diary.member, diary], method: :delete %>
+      </h6>
+    </div>
+    </div>
+  <% end %>
+</p>
+
+
+<%= form_for([@member, @member.diaries.build]) do |f| %>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">
+      Card title
+    </h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+      <% options = %w(面接数 訪問数 対応数 対面率 フル数 ドア率 既存 その他)%>
+      項目: <%= f.select :target, options %>
+    </h6>
+    <p class="card-text">
+      行動: <%= f.text_area :taking_action, cols: 40, rows: 3 %>
+    </p>
+  </div>
+</div>
+  <div><%= f.submit %></div>
+<% end %>
+
+<h2><%= link_to "Edit", edit_member_path(@member) %></h2>
+<h2><%= link_to "Delete", member_path(@member), method: :delete %></h2>
