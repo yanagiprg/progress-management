@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :users
   resources :members do
-    resources :diaries    
+    resources :diaries
   end
+  
 end

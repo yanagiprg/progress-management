@@ -17,6 +17,9 @@
       <h6 class="card-text">
         <%= diary.created_at %>
       </h6>
+      <h6 class="card-text">
+        <%= diary.id %> / <%= diary.member_id %>
+      </h6>
       <h6>
         <%= link_to "編集", [diary.member, diary] %>
         <%= link_to "削除", [diary.member, diary], method: :delete %>

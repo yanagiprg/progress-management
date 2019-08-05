@@ -28,7 +28,8 @@ class DiariesController < ApplicationController
 
   def update
     @member = Member.find(params[:member_id])
-    @diary = @member.diaries.update(diary_params)
+    @diary = @member.diaries.find(params[:id])
+    @diary.update(diary_params)
     redirect_to member_path(@member)
   end
 

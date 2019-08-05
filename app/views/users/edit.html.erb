@@ -1,5 +1,14 @@
 <h1>編集</h1>
-<%= form_for @user do |f| %>
-  Name: <%= f.text_field :user_name, size: 16 %>
+<%= form_for @user, method: :patch do |f| %>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">
+      Card title
+    </h5>
+    <p class="card-text">
+      名前: <%= f.text_field :user_name, size: 16 %>
+    </p>
+  </div>
+</div>
   <div><%= f.submit %></div>
 <% end %>

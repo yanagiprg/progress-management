@@ -1,7 +1,19 @@
 <h1>User一覧</h1>
 <h2>
-    <%= link_to "Signup", new_user_path %>
     <% @users.each do |user| %>
-        <%= link_to user.user_name, user_path(user) %>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h2 class="card-title">
+          <%= link_to user.user_name, user_path(user) %>
+        </h2>
+        <h6 class="card-text">
+          <%= user.created_at %>
+        </h6>
+        <h6>
+          <%= link_to "編集", edit_user_path(user) %>
+          <%= link_to "削除",user_path(user), method: :delete %>
+        </h6>
+      </div>
+    </div>
     <% end %>
 </h2>

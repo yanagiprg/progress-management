@@ -1,19 +1,17 @@
-<h2>
-    <%= link_to "支局メンバー", new_member_path %>
-    <% @members.each do |member| %>
-    <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h2 class="card-title">
+<h1 class="text text-center my-5">支局メンバー</h1>
+<div class="row px-4">
+  <% @members.each do |member| %>
+  <div class="box p-2 col-4 col-md-3">
+    <div class="inbox mx-auto pt-1 shadow rounded">
+      <div class="img_smpl mx-auto mt-4 mb-2 shadow">
+      </div>
+      <h4 class="text text-center pt-1 pb-1">
         <%= link_to member.name, member_path(member) %>
-      </h2>
-      <h6 class="card-text">
+      </h4>
+      <p class="text text-center pt-2 pb-3">
         <%= member.created_at %>
-      </h6>
-      <h6>
-        <%= link_to "編集", edit_member_path(member) %>
-        <%= link_to "削除", member_path(member), method: :delete %>
-      </h6>
+      </p>
     </div>
-    </div>
-    <% end %>
-</h2>
+  </div>
+  <% end %>
+</div>
